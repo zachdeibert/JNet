@@ -52,7 +52,7 @@ final public class RemoteClient extends AsyncDeserializer implements
      * Disconnects this client from the server
      * 
      * @author Zach Deibert
-     * @see NetworkServer.disconnect()
+     * @see NetworkServer#disconnect()
      * @since 1.0
      * @throws IOException
      *             An I/O error has occurred

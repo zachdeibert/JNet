@@ -28,7 +28,7 @@ public class Packet implements Serializable
      * Used to find the correct handler when the packet is recieved.
      * 
      * @author Zach Deibert
-     * @serialField
+     * @serial The packet id
      * @since 1.0
      */
     int                       id;

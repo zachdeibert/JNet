@@ -62,7 +62,7 @@ public abstract class PacketHandler
      *            The ID of the packet handler. It must be the same as the ID
      *            for the
      *            Packet.
-     * @see Packet.id
+     * @see Packet#id
      * @since 1.0
      */
     protected PacketHandler(final int id)

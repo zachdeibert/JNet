@@ -21,7 +21,7 @@ public final class NetworkClient extends AsyncDeserializer implements
      * The event to call when the client connects to a server
      * 
      * @author Zach Deibert
-     * @see ConnectEvent.add
+     * @see ConnectEvent#add
      * @since 1.0
      */
     public ConnectEvent        onConnect;

@@ -20,7 +20,7 @@ public final class NetworkServer implements LocalNetworkNode
      * The event to call when the client connects to a server
      * 
      * @author Zach Deibert
-     * @see ConnectEvent.add
+     * @see ConnectEvent#add
      * @since 1.0
      */
     public ConnectEvent              onConnect;
