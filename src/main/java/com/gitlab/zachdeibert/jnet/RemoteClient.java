@@ -2,7 +2,9 @@ package com.gitlab.zachdeibert.jnet;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 
 /**
  * A class to represent a client connected to a server
@@ -62,6 +64,76 @@ final public class RemoteClient extends AsyncDeserializer implements
     {
         server.disconnect(this);
         closed = true;
+    }
+
+    /**
+     * Disconnects this client from the server
+     * 
+     * @author Zach Deibert
+     * @see disconnect
+     * @since 1.1
+     * @throws Throwable
+     *             An error has occurred
+     */
+    @Override
+    protected void finalize() throws Throwable
+    {
+        disconnect();
+        super.finalize();
+    }
+
+    /**
+     * Gets the IP of the client
+     * 
+     * @author Zach Deibert
+     * @return The IP of the client
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public String getIP() throws IOException
+    {
+        final SocketAddress server = socket.getRemoteSocketAddress();
+        if (server == null)
+        {
+            throw new IOException("The client is not connected to a server");
+        }
+        if (server instanceof InetSocketAddress)
+        {
+            return ((InetSocketAddress) server).getAddress().getHostAddress();
+        }
+        else
+        {
+            throw new IOException("Cannot get remote IP");
+        }
+    }
+
+    /**
+     * Gets the port of the client
+     * 
+     * @author Zach Deibert
+     * @return The port of the client
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public short getPort() throws IOException
+    {
+        final SocketAddress server = socket.getRemoteSocketAddress();
+        if (server == null)
+        {
+            throw new IOException("The client is not connected to a server");
+        }
+        if (server instanceof InetSocketAddress)
+        {
+            return (short) ((InetSocketAddress) server).getPort();
+        }
+        else
+        {
+            throw new IOException("Cannot get remote port");
+        }
     }
 
     /**

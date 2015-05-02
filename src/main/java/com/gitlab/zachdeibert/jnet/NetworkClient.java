@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -114,9 +115,88 @@ public final class NetworkClient extends AsyncDeserializer implements
     @Override
     public void disconnect() throws IOException
     {
-        istream.close();
-        ostream.close();
-        socket.close();
+        if (istream != null)
+        {
+            istream.close();
+        }
+        if (ostream != null)
+        {
+            ostream.close();
+        }
+        if (socket != null)
+        {
+            socket.close();
+        }
         closed = true;
+    }
+
+    /**
+     * Disconnects the client from the server
+     * 
+     * @author Zach Deibert
+     * @see disconnect
+     * @since 1.1
+     * @throws Throwable
+     *             An error has occurred
+     */
+    @Override
+    protected void finalize() throws Throwable
+    {
+        disconnect();
+        super.finalize();
+    }
+
+    /**
+     * Gets the IP of the server
+     * 
+     * @author Zach Deibert
+     * @return The IP of the server
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public String getIP() throws IOException
+    {
+        final SocketAddress server = socket.getRemoteSocketAddress();
+        if (server == null)
+        {
+            throw new IOException("The client is not connected to a server");
+        }
+        if (server instanceof InetSocketAddress)
+        {
+            return ((InetSocketAddress) server).getAddress().getHostAddress();
+        }
+        else
+        {
+            throw new IOException("Cannot get remote IP");
+        }
+    }
+
+    /**
+     * Gets the port of the server
+     * 
+     * @author Zach Deibert
+     * @return The port of the server
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public short getPort() throws IOException
+    {
+        final SocketAddress server = socket.getRemoteSocketAddress();
+        if (server == null)
+        {
+            throw new IOException("The client is not connected to a server");
+        }
+        if (server instanceof InetSocketAddress)
+        {
+            return (short) ((InetSocketAddress) server).getPort();
+        }
+        else
+        {
+            throw new IOException("Cannot get remote port");
+        }
     }
 }

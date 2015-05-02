@@ -141,6 +141,22 @@ public final class NetworkServer implements LocalNetworkNode
     }
 
     /**
+     * Disconnects all clients and shuts down the server socket
+     * 
+     * @author Zach Deibert
+     * @see disconnect
+     * @since 1.1
+     * @throws Throwable
+     *             An error occurred
+     */
+    @Override
+    protected void finalize() throws Throwable
+    {
+        disconnect();
+        super.finalize();
+    }
+
+    /**
      * Binds the socket and starts the listener thread
      * 
      * @author Zach Deibert
@@ -172,6 +188,36 @@ public final class NetworkServer implements LocalNetworkNode
     public void connect(final short port) throws IOException
     {
         connect(null, port);
+    }
+
+    /**
+     * Gets the IP the server is listening on
+     * 
+     * @author Zach Deibert
+     * @return The IP of the server
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public String getIP() throws IOException
+    {
+        return "0.0.0.0";
+    }
+
+    /**
+     * Gets the port the server is listening on
+     * 
+     * @author Zach Deibert
+     * @return The port of the server
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    @Override
+    public short getPort() throws IOException
+    {
+        return (short) socket.getLocalPort();
     }
 
     /**

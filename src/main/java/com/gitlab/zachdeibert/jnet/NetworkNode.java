@@ -32,4 +32,26 @@ public interface NetworkNode
      *             An I/O error has occurred
      */
     public void disconnect() throws IOException;
+
+    /**
+     * Gets the IP the node is connected to
+     * 
+     * @author Zach Deibert
+     * @return The IP
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    public String getIP() throws IOException;
+
+    /**
+     * Gets the port the node is connected to
+     * 
+     * @author Zach Deibert
+     * @return The port
+     * @since 1.1
+     * @throws IOException
+     *             An I/O error has occurred
+     */
+    public short getPort() throws IOException;
 }
