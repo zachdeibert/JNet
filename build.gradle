@@ -1,6 +1,8 @@
 apply plugin: "java"
 apply plugin: "maven-publish"
 
+def publishVersion = "1.1"
+
 repositories {
     mavenCentral()
 }
@@ -31,19 +33,19 @@ publishing {
 			from components.java
 			groupId "com.gitlab.zachdeibert"
 			artifactId "jnet"
-			version "1.0"
+			version publishVersion
 		}
 		src(MavenPublication) {
 			artifact jarSrc
 			groupId "com.gitlab.zachdeibert"
 			artifactId "jnet"
-			version "1.0"
+			version publishVersion
 		}
 		javadoc(MavenPublication) {
 			artifact jarDoc
 			groupId "com.gitlab.zachdeibert"
 			artifactId "jnet"
-			version "1.0"
+			version publishVersion
 		}
 	}
 }
