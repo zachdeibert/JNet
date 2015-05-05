@@ -10,7 +10,7 @@ import java.util.List;
  * @author Zach Deibert
  * @see TrackerPacket
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class TrackerPacketHandler extends PacketHandler
 {

@@ -8,7 +8,7 @@ import org.junit.Test;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class MultiClientTest
 {
@@ -17,7 +17,7 @@ public class MultiClientTest
      * 
      * @author Zach Deibert
      * @since 1.0
-     * @version 1.0
+     * @version 1.1
      */
     private class TestPacketHandler extends PacketHandler
     {

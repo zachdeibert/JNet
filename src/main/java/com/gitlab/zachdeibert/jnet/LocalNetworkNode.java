@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public interface LocalNetworkNode extends NetworkNode
 {

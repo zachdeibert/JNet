@@ -10,7 +10,7 @@ import java.util.Map;
  * @author Zach Deibert
  * @see Packet
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public abstract class PacketHandler
 {

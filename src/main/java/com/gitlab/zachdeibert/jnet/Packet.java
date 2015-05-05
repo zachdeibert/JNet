@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @see PacketHandler
  * @serial
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class Packet implements Serializable
 {
