@@ -53,5 +53,5 @@ public interface NetworkNode
      * @throws IOException
      *             An I/O error has occurred
      */
-    public short getPort() throws IOException;
+    public int getPort() throws IOException;
 }

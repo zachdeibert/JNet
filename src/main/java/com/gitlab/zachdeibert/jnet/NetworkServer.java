@@ -215,9 +215,9 @@ public final class NetworkServer implements LocalNetworkNode
      *             An I/O error has occurred
      */
     @Override
-    public short getPort() throws IOException
+    public int getPort() throws IOException
     {
-        return (short) socket.getLocalPort();
+        return socket.getLocalPort();
     }
 
     /**

@@ -119,7 +119,7 @@ final public class RemoteClient extends AsyncDeserializer implements
      *             An I/O error has occurred
      */
     @Override
-    public short getPort() throws IOException
+    public int getPort() throws IOException
     {
         final SocketAddress server = socket.getRemoteSocketAddress();
         if (server == null)
@@ -128,7 +128,7 @@ final public class RemoteClient extends AsyncDeserializer implements
         }
         if (server instanceof InetSocketAddress)
         {
-            return (short) ((InetSocketAddress) server).getPort();
+            return ((InetSocketAddress) server).getPort();
         }
         else
         {

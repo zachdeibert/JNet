@@ -130,8 +130,8 @@ public class AddressDetectionTest
     @Test
     public void testPortDetection() throws Throwable
     {
-        final Map<NetworkNode, Short> ports = Collections
-                        .synchronizedMap(new HashMap<NetworkNode, Short>());
+        final Map<NetworkNode, Integer> ports = Collections
+                        .synchronizedMap(new HashMap<NetworkNode, Integer>());
         new PacketHandler(42)
         {
             /**
@@ -221,10 +221,10 @@ public class AddressDetectionTest
                             {
                                 if (n != node)
                                 {
-                                    final Short IP = ports.get(n);
+                                    final Integer port = ports.get(n);
                                     Assert.assertEquals(
                                                     "Port was not detected correctly",
-                                                    port, (short) IP);
+                                                    this.port, (int) port);
                                     run = false;
                                     break;
                                 }
