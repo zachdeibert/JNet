@@ -13,7 +13,7 @@ import java.util.List;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.2
+ * @version 1.2.1
  */
 public final class NetworkServer implements LocalNetworkNode
 {

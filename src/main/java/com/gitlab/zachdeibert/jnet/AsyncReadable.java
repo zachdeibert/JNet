@@ -8,7 +8,7 @@ import java.io.IOException;
  * @author Zach Deibert
  * @see AsyncRunner
  * @since 1.0
- * @version 1.2
+ * @version 1.2.1
  */
 abstract class AsyncReadable implements NetworkNode
 {
