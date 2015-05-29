@@ -12,7 +12,7 @@ import java.net.SocketAddress;
  * @author Zach Deibert
  * @see NetworkServer
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 final public class RemoteClient extends AsyncDeserializer implements
                 NetworkNode

@@ -11,7 +11,7 @@ import java.util.List;
  * @author Zach Deibert
  * @see NetworkServer
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 final class ServerListener extends Thread
 {

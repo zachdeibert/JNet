@@ -6,7 +6,7 @@ package com.gitlab.zachdeibert.jnet;
  * @author Zach Deibert
  * @see TrackerPacketHandler
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 public class TrackerPacket extends Packet
 {

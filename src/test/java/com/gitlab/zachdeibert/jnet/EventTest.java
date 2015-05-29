@@ -8,7 +8,7 @@ import org.junit.Test;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 public class EventTest
 {
@@ -17,7 +17,7 @@ public class EventTest
      * 
      * @author Zach Deibert
      * @since 1.0
-     * @version 1.1
+     * @version 1.2
      */
     private class EventHandler implements ConnectEvent
     {

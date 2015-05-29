@@ -5,7 +5,7 @@ package com.gitlab.zachdeibert.jnet;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.1
+ * @version 1.2
  */
 public interface ConnectEvent
 {

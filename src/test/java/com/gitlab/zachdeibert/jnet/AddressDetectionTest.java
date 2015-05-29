@@ -12,7 +12,7 @@ import org.junit.Test;
  * 
  * @author Zach Deibert
  * @since 1.1
- * @version 1.1
+ * @version 1.2
  */
 public class AddressDetectionTest
 {
