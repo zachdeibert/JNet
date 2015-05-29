@@ -3,6 +3,7 @@ package com.gitlab.zachdeibert.jnet;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,8 +50,8 @@ public final class NetworkServer implements LocalNetworkNode
     private final List<RemoteClient> clients;
 
     /**
-     * Accepts a client that is trying to connect.
-     * This method will block until a client starts connecting.
+     * Accepts a client that is trying to connect. This method will block until
+     * a client starts connecting.
      * 
      * @author Zach Deibert
      * @see listener
@@ -89,10 +90,26 @@ public final class NetworkServer implements LocalNetworkNode
     {
         synchronized (clients)
         {
+            final List<RemoteClient> disconnected = new LinkedList<RemoteClient>();
             for (final RemoteClient client : clients)
             {
-                client.sendPacket(packet);
+                try
+                {
+                    client.sendPacket(packet);
+                }
+                catch (final SocketException ex)
+                {
+                    if (ex.getMessage().equals("Broken pipe"))
+                    {
+                        disconnected.add(client);
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
+                }
             }
+            clients.removeAll(disconnected);
         }
     }
 
