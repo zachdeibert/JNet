@@ -50,6 +50,7 @@ public final class NetworkClient extends AsyncDeserializer implements
     public void sendPacket(final Packet packet) throws IOException
     {
         ostream.writeObject(packet);
+        ostream.reset();
     }
 
     /**
