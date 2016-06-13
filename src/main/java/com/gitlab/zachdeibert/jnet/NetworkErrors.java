@@ -30,19 +30,26 @@ public class NetworkErrors {
 	 * @since 1.2.2
 	 */
 	static void networkError(final Throwable t, final NetworkNode node) {
+		boolean handled = false;
 		if ( node == null ) {
 			unknownHandlers.forEach(e -> e.handleUnknownError(t));
+			handled = !unknownHandlers.isEmpty();
 		} else {
 			for ( final NetworkNode n : handlers.keySet() ) {
 				if ( n == node ) {
+					handled = true;
 					handlers.get(n).forEach(e -> e.handleError(t, node));
 				}
 			}
 			for ( final Predicate<NetworkNode> n : dynamicHandlers.keySet() ) {
 				if ( n.test(node) ) {
+					handled = true;
 					dynamicHandlers.get(n).forEach(e -> e.handleError(t, node));
 				}
 			}
+		}
+		if ( !handled ) {
+			t.printStackTrace();
 		}
 	}
 
