@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author Zach Deibert
  * @since 1.0
- * @version 1.2.1
+ * @version 1.2.2
  */
 final class AsyncRunner extends Thread
 {
@@ -122,7 +122,8 @@ final class AsyncRunner extends Thread
                     }
                     catch (final Exception ex)
                     {
-                        ex.printStackTrace();
+                    	final Object o = this;
+                    	NetworkErrors.networkError(ex, o instanceof NetworkNode ? (NetworkNode) o : null);
                     }
                 }
             }

@@ -11,7 +11,7 @@ import java.util.List;
  * @author Zach Deibert
  * @see NetworkServer
  * @since 1.0
- * @version 1.2.1
+ * @version 1.2.2
  */
 final class ServerListener extends Thread
 {
@@ -98,7 +98,7 @@ final class ServerListener extends Thread
             }
             catch (final Exception ex)
             {
-                ex.printStackTrace();
+            	NetworkErrors.networkError(ex, server);
             }
         }
     }
