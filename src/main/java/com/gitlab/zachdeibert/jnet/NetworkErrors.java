@@ -61,7 +61,7 @@ public class NetworkErrors {
 	 * @since 1.2.2
 	 */
 	static void networkError(final Throwable t) {
-		networkError(null);
+		networkError(t, null);
 	}
 
 	/**
