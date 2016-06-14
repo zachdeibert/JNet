@@ -67,11 +67,11 @@ public class PacketIdRange {
 		} else if ( sub.to < from || sub.from > to ) {
 			return new PacketIdRange[] { this };
 		} else if ( sub.from <= from ) {
-			return new PacketIdRange[] { new PacketIdRange(sub.to, to) };
+			return new PacketIdRange[] { new PacketIdRange(sub.to + 1, to) };
 		} else if ( sub.to >= to ) {
-			return new PacketIdRange[] { new PacketIdRange(from, sub.from) };
+			return new PacketIdRange[] { new PacketIdRange(from, sub.from - 1) };
 		} else {
-			return new PacketIdRange[] { new PacketIdRange(from, sub.from), new PacketIdRange(sub.to, to) };
+			return new PacketIdRange[] { new PacketIdRange(from, sub.from - 1), new PacketIdRange(sub.to + 1, to) };
 		}
 	}
 
